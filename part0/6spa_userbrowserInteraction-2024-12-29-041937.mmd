@@ -1,0 +1,19 @@
+sequenceDiagram
+  participant A as User
+  participant B as Browser
+  participant C as JS
+  participant D as Server
+
+  A ->> B: Type any input and submit
+  B ->> C: call local js
+  C ->> D: Send HTTP reuest
+  D -->> C: Replay HTTP status code 302 with a single HTML
+  C -->> C: Stay in the same page and store the data in json file
+  alt is any problem?
+        C-->>B: Sorry Something Error Happend :(
+    else if everything okay
+        B-->>A: Display Submitted data
+    end
+
+
+

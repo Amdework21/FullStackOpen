@@ -1,0 +1,22 @@
+sequenceDiagram
+  participant A as User
+  participant B as Browser
+  participant C as Server
+
+  A ->> B: Type any input and submit
+  B ->> C: Send HTTT POST Reuest
+  C -->> B: Replay HTTP status code 302 with all HTML code
+  alt is any problem?
+        B-->>A: Sorry Something Error Happend :(
+    else is okay
+  C ->> B: store data and instruct the browser to reload the data
+        B->>B: Browser reloads the page
+        B->>C: Request main.css
+        B->>C: Request main.js
+        B->>C: Request data.json
+        C-->>B: reply all data
+        B-->>A: Display Submitted data
+    end
+
+
+

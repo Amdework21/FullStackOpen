@@ -1,0 +1,17 @@
+sequenceDiagram
+  participant A as User
+  participant B as Browser
+  participant C as Server
+
+  A ->> B: browse the page
+  B ->> C: Send HTTP reuest
+  C -->> B: Replay HTTP status code 302 with a single HTML
+  C -->> B: Load all required documents at once
+  alt is any problem?
+        B-->>A: Sorry Something Error Happend :(
+    else if everything okay
+        B-->>A: Open Page
+    end
+
+
+
